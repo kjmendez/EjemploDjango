@@ -6,6 +6,7 @@ from rest_framework.permissions import IsAuthenticated
 from rest_framework.response import Response
 from .models import Producto, Cliente, Categoria, Venta
 from .serializers import ProductoSerializer, ClienteSerializer, CategoriaSerializer, VentaSerializer
+from django.http import HttpResponse
 
 # ModelViewSets
 class ProductoViewSet(viewsets.ModelViewSet):
@@ -35,3 +36,5 @@ class CategoriaList(generics.ListCreateAPIView):
 def total_ventas(request):
     total = Venta.objects.count()
     return Response({"total_ventas": total})
+def home(request):
+    return HttpResponse("Bienvenido al sistema de ventas")
